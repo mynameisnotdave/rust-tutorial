@@ -34,3 +34,32 @@ fn build_user(email: String, username: String) -> User {
         sign_in_count: 1
     }
 }
+
+
+// These are tuple structs.
+struct Colour(i32, i32, i32);
+struct Point(i32, i32, i32);
+
+fn tuple_structs() -> () {
+    let black = Colour(0,0,0);
+    let origin = Point(0,0,0);
+}
+
+struct Person {
+    name: String,
+    age: u8,
+    hobby: String
+}
+
+fn assign_struct_val_from_var() -> () {
+    // Here one can see that it is also possible to implicitly assign a value 
+    // to a member of an instantiated struct if there is a scoped variable with the same name
+    // as the name of the struct member.
+    let age: u8 = 30;
+    let p = Person {
+        name: String::from("sunface"),
+        age,
+        hobby: String::from("coding")
+    };
+
+}
