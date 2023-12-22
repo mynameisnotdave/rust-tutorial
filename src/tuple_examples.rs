@@ -24,3 +24,14 @@ fn tuple_too_long () -> () {
     let too_long_tuple: (i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32) = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13);
     println!("too long of a tuple: {:?}", too_long_tuple);
 }
+
+fn destructure_tuple () -> () {
+    // This demonstrates how to destructure a tuple. This means assignment of the tuple's values
+    // to individual variables for each value in the tuple.
+    let tup: (i32, f64, &str) = (1, 6.4, "hello");
+    let (x, z, y) = tup;
+
+    assert_eq!(x, 1);
+    assert_eq!(y, "hello");
+    assert_eq!(z, 6.4);
+}
