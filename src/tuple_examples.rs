@@ -35,3 +35,11 @@ fn destructure_tuple () -> () {
     assert_eq!(y, "hello");
     assert_eq!(z, 6.4);
 }
+
+fn assign_tuples_later() -> () {
+    // This shows how to destructure assignments, in other words, creating a tuple with no values,
+    // just assignments, and then assigning values to each variable later on.
+    let (x, y, z);
+
+    (y, z, x) = (1, 2, 3);
+}
