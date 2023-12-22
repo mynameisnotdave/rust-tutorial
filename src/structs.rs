@@ -28,7 +28,7 @@ fn build_user(email: String, username: String) -> User {
     return User {
         active: true,
         // Declaring the assignment of values to the two members below is not necessary if
-        // the name(s) of the function parameter(s) and the name(s) of the member(s) match.
+        // the name(s) of the function parameter(s) and the name(s) of the member(s) match(es).
         username,
         email,
         sign_in_count: 1
@@ -55,7 +55,10 @@ fn check_color(p: Point) {
     // This function demonstrates how to destructure a tuple struct.
     // Additionally, it shows that an underscore may be used if there is no reason for a
     // value in the tuple struct to be reassigned (if it were to be accessed by index).
-    let Point(x, _, z) = p;
+
+    // Also, the types of a destructured tuple struct cannot be individually defined.
+    // The type must remain as Point.
+    let Point(x, _, z): Point = p;
     assert_eq!(x, 0);
     assert_eq!(z, 255);
 
@@ -79,3 +82,23 @@ fn assign_struct_val_from_var() -> () {
     };
 }
 
+// This shows how to use an attribute to get a struct to print.
+// Additionally, it shows how to use the dbg macro. However, since this prints to stderr,
+// it would not be visible upon output as there is no error in the following code.
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32
+}
+
+fn print_struct() -> () {
+    let scale: u32 = 2;
+    let rect1 = Rectangle {
+        width: dbg!(30 * scale),
+        height: 50
+    };
+
+    dbg!(&rect1);
+
+    println!("{:?}", rect1);
+}
