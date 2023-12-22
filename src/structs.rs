@@ -20,8 +20,10 @@ fn struct_impl() -> () {
 fn build_user(email: String, username: String) -> User {
     return User {
         active: true,
-        username: username,
-        email: email,
+        // Declaring the assignment of values to the two members below is not necessary if
+        // the name(s) of the function parameter(s) and the name(s) of the member(s) match.
+        username,
+        email,
         sign_in_count: 1
     }
 }
