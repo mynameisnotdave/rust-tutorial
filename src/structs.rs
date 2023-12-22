@@ -83,8 +83,7 @@ fn assign_struct_val_from_var() -> () {
 }
 
 // This shows how to use an attribute to get a struct to print.
-// Additionally, it shows how to use the dbg macro. However, since this prints to stderr,
-// it would not be visible upon output as there is no error in the following code.
+// Additionally, it shows how to use the dbg macro.
 #[derive(Debug)]
 struct Rectangle {
     width: u32,
