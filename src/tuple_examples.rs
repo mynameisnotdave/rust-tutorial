@@ -43,3 +43,12 @@ fn assign_tuples_later() -> () {
 
     (y, z, x) = (1, 2, 3);
 }
+
+// These two functions show to use a destructured tuple as a function parameter.
+fn tuples_as_args() -> () {
+    let (x, y): (i32, i32) = sum_multiply((2, 3));
+}
+
+fn sum_multiply(nums: (i32, i32)) -> (i32, i32) {
+    return (nums.0 + nums.1, nums.0 * nums.1)
+}
