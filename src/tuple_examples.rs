@@ -21,7 +21,8 @@ fn tuple_references() -> () {
 
 fn tuple_too_long () -> () {
     // This would not work. I understand that tuples over 12 elements long are not printable.
-    let too_long_tuple: (i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32) = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13);
+    // Hence the removal of one element.
+    let too_long_tuple: (i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32) = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
     println!("too long of a tuple: {:?}", too_long_tuple);
 }
 
