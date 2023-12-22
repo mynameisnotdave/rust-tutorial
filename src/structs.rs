@@ -45,6 +45,22 @@ fn tuple_structs() -> () {
     let origin = Point(0,0,0);
 }
 
+fn tuple_struct_impl() -> () {
+    let v: Point = Point(0, 127, 255);
+    check_color(v);
+
+}
+
+fn check_color(p: Point) {
+    // This function demonstrates how to destructure a tuple struct.
+    // Additionally, it shows that an underscore may be used if there is no reason for a
+    // value in the tuple struct to be reassigned (if it were to be accessed by index).
+    let Point(x, _, z) = p;
+    assert_eq!(x, 0);
+    assert_eq!(z, 255);
+
+}
+
 struct Person {
     name: String,
     age: u8,
@@ -61,5 +77,5 @@ fn assign_struct_val_from_var() -> () {
         age,
         hobby: String::from("coding")
     };
-
 }
+
