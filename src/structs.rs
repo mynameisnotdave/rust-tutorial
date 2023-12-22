@@ -14,6 +14,13 @@ fn struct_impl() -> () {
         email: String::from("someone@example.com"),
         sign_in_count: 1
     };
+    let user2 = User {
+        email: String::from("another@example.com"),
+        // If one value from the previous assignment just needs to be changed then
+        // define that change of value and then just use the following syntax to declare
+        // that 'everything else should be kept the same as before'
+        ..user1
+    };
 }
 
 // Here, we have a function that returns the User struct.
