@@ -60,3 +60,12 @@ fn assign_with_match() -> () {
         false => 0
     };
 }
+
+// The matches! macro asserts if a variable matches a particular pattern.
+fn matches_macro() -> () {
+    let alphabets: [char; 7] = ['a', 'E', 'Z', '0', 'x', '9', 'Y'];
+
+    for ab in alphabets {
+        assert!(matches!(ab, 'A'..='Z'| 'a'..='z' | '0'..='9'))
+    }
+}
