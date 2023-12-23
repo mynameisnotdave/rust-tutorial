@@ -40,7 +40,7 @@ fn enumerate() -> () {
     }
 }
 
-fn break_loop() -> () {
+fn break_for() -> () {
     let mut n: i32 = 0;
     // Formatting this as 0..=100 means that 100 will be included.
     for i in 0..=100 {
@@ -53,4 +53,28 @@ fn break_loop() -> () {
     assert_eq!(n, 66);
 
     println!("Success!");
+}
+
+// This shows how to use the 'loop' loop in Rust. This creates an infinite loop that must
+// be deliberately broken out of.
+fn break_loop() -> () {
+    let mut count: u32 = 0;
+
+    loop {
+        count += 1;
+        
+        if count == 3 {
+            println!("three");
+
+            break;
+        }
+        
+        println!("{}", count);
+
+        if count == 5 {
+            println!("OK, that's enough");
+
+            break;
+        }
+    }
 }
