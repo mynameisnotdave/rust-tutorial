@@ -29,3 +29,13 @@ fn assign_by_conditional() -> () {
         };
     println!("{} -> {}", n, big_n);
 }
+
+fn enumerate() -> () {
+    let a: [i32; 4] = [4, 3, 2, 1];
+
+    // Here we have index i and v representing a. The iter().enumerate() code
+    // iterates through the array.
+    for(i, v) in a.iter().enumerate() {
+        println!("The {}th element is {}", i+1,v);
+    }
+}
