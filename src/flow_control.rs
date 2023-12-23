@@ -78,3 +78,48 @@ fn break_loop() -> () {
         }
     }
 }
+
+// This shows how to assign a value using a loop.
+fn assign_loop_to_val() -> () {
+    let mut count: i32 = 0;
+
+    let result: i32 = loop {
+        count += 1;
+        
+        if counter == 10 {
+            break counter * 2;
+        }
+    }; // if a value is assigned via a loop, then a semicolon must be added
+
+    assert_eq!(result, 20);
+
+    println!("Success!");
+}
+
+// This shows how to use inner and outer loops. They must be annotated. 
+fn outer_and_inner_loops() -> () {
+    let mut count: i32 = 0;
+
+    'outer: loop {
+        'inner1: loop {
+            if count >= 20 {
+                break 'inner1;
+            }
+            count += 2;
+        }
+
+        count += 5;
+
+        'inner2: loop {
+            if count >= 30 {
+                break 'outer;
+            }
+
+            continue 'outer;
+        }
+    }
+
+    assert!(count == 30);
+
+    println!("Success!");
+}
