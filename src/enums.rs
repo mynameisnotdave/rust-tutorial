@@ -21,6 +21,7 @@ fn cast_enums_as_ints() -> () {
 }
 
 // This shows how enums can hold different types of data.
+#[derive(Debug)]
 enum Message {
     Quit,
     Move { x: i32, y: i32 },
@@ -32,4 +33,35 @@ enum Message {
 fn message_impl() -> () {
     let msg1 = Message::Move { x: (3), y: (4) };
     let msg2 = Message::Write(String::from("hello world"));
+}
+
+// This shows how to destructure a value in an enum type in an 'if let' statement.
+fn destructure_enum_val() -> () {
+    let msg: Message = Message::Move{x: 1, y: 1};
+
+    if let Message::Move { x: a, y: b } = msg {
+        assert_eq!(a,b);
+    } else {
+        panic!("NEVER LET THIS RUN! ");
+    }
+}
+
+fn enum_array() -> () {
+    let msgs: [Message; 3] = [
+        Message::Quit,
+        Message::Move { x: (1), y: (3) },
+        Message::ChangeColor(255, 255, 0)
+    ];
+
+    for msg in msgs {
+        // This appears to show the importance of semicolons in Rust.
+        // Note that the semi colon is omitted here.
+        // Presumably, if there was a semicolon, then the foreach loop
+        // would terminate early.
+        show_message(msg)
+    }
+}
+
+fn show_message(msg: Message) {
+    println!("{:?}", msg);
 }
