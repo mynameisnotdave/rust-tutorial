@@ -16,5 +16,6 @@ enum Number {
 }
 
 fn cast_enums_as_ints() -> () {
+    // This shows how to use enums as integers by casting them with the 'as' keyword.
     assert_ne!(Number::One as u8, Number::Two as u8);
 }
