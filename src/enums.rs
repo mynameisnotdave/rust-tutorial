@@ -8,3 +8,13 @@ fn assign_enums() ->() {
 
     let loopback: IpAddr = IpAddr::V6(String::from("::1"));
 }
+
+enum Number {
+    Zero = 0,
+    One = 1,
+    Two = 2
+}
+
+fn cast_enums_as_ints() -> () {
+    assert_ne!(Number::One as u8, Number::Two as u8);
+}
