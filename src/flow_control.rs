@@ -39,3 +39,18 @@ fn enumerate() -> () {
         println!("The {}th element is {}", i+1,v);
     }
 }
+
+fn break_loop() -> () {
+    let mut n: i32 = 0;
+    // Formatting this as 0..=100 means that 100 will be included.
+    for i in 0..=100 {
+        if n == 66 {
+            break;
+        }
+        n += 1;
+    }
+
+    assert_eq!(n, 66);
+
+    println!("Success!");
+}
