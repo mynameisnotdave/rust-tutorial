@@ -111,6 +111,8 @@ fn pattern_match() {
     let p = Point {x: 3, y: 12 };
 
     match p {
+        // If there is no assignment after the value, then the default value already defined
+        // in the variable declaration is presumed.
         Point { x, y: 0 } => println!("On the x axis at {}", x),
         // The '@' symbol is used to pattern match in Rust. y is destructured into
         // w, where it is used to match a particular pattern. This w variable can then be used
