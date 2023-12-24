@@ -1,1 +1,1 @@
-This is me following along the FreeCodeCamp Rust tutorial located at [https://www.youtube.com/watch?v=BpPEoZW5IiY&t=17086s].
+This is me following along the FreeCodeCamp Rust tutorial located at https://www.youtube.com/watch?v=BpPEoZW5IiY&t=17086s.
