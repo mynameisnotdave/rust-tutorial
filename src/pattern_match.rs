@@ -90,3 +90,15 @@ fn enum_vector() -> () {
 
     println!("Success!");
 }
+
+// Using 'if let' and Option<T>.
+fn use_if_let_and_not_match() -> () {
+    let o: Option<i32> = Some(7);
+
+    if let Some(i) = o {
+        println!("This is a really long string and {:?}", i);
+
+        println!("Success!");
+    }
+}
+
