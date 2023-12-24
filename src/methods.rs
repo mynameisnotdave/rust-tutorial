@@ -26,3 +26,11 @@ impl Rectangle {
 fn associated_type_init() -> () {
     let rec1: Rectangle = Rectangle::new(5, 10);
 }
+
+/* Some key semantics here in Rust:
+        A method always has a return type, their first parameter is always self,
+        and that self refers to the struct or enum that the method is being called on.
+
+        A function is just a plain old 'fn' function and can be associated or not
+        associated with anything.
+*/
