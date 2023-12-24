@@ -102,3 +102,21 @@ fn use_if_let_and_not_match() -> () {
     }
 }
 
+struct Point {
+    x: i32,
+    y: i32
+}
+
+fn pattern_match() {
+    let p = Point {x: 3, y: 12 };
+
+    match p {
+        Point { x, y: 0 } => println!("On the x axis at {}", x),
+        // The '@' symbol is used to pattern match in Rust. y is destructured into
+        // w, where it is used to match a particular pattern. This w variable can then be used
+        // elsewhere.
+        Point { x: 0..=5, y: w @ (10 | 20 | 30) } => println!("On the y axis at {}", w),
+        Point {x, y} => println!("On neither axis: ({}, {})", x, y),
+    }
+}
+
