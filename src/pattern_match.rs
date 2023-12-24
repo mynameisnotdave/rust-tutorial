@@ -69,3 +69,24 @@ fn matches_macro() -> () {
         assert!(matches!(ab, 'A'..='Z'| 'a'..='z' | '0'..='9'))
     }
 }
+
+enum MyEnum {
+    Foo,
+    Bar
+}
+
+// Use of matches to match the enum instead of using the '==' which will throw an error
+fn enum_vector() -> () {
+    let mut count: i32 = 0;
+
+    let v: Vec<MyEnum> = vec![MyEnum::Foo, MyEnum::Bar, MyEnum::Foo];
+    for e in v {
+        if matches!(e, MyEnum::Foo) {
+            count += 1;
+        }
+    }
+
+    assert_eq!(count, 2);
+
+    println!("Success!");
+}
