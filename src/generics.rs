@@ -28,3 +28,14 @@ fn assign_val_to_point_struct() -> () {
     // This is how to instantiate a generic struct. 
     let x: Point<i32> = Point{x: 4, y: 8};
 }
+
+// 'U' is the name of the second type as it is the letter after T.
+struct TwoTypedPoint<T, U> {
+    x: T,
+    y: U
+}
+
+fn two_typed_point() -> () {
+    // Generic structs can also take multiple different defined types.
+    let p: TwoTypedPoint<i32, String> = TwoTypedPoint{x: 5, y: "hello".to_string()};
+}
