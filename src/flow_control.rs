@@ -86,8 +86,8 @@ fn assign_loop_to_val() -> () {
     let result: i32 = loop {
         count += 1;
         
-        if counter == 10 {
-            break counter * 2;
+        if count == 10 {
+            break count * 2;
         }
     }; // if a value is assigned via a loop, then a semicolon must be added
 
