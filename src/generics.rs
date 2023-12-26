@@ -60,3 +60,21 @@ fn two_typed_point() -> () {
     let p2: TwoTypedPoint<&str, char> = TwoTypedPoint {x: "Hello", y: 'Д'};
     let p3: TwoTypedPoint<i32, char> = p1.mixup(p2);
 }
+
+/// A generic struct does not necessarily have to trickle down its generic-ness to its
+/// implementation. The implementation can define a type for its methods and that will be
+/// the end of the generic-ness for the struct. This is most likely why multiple
+/// implementations can exist for the same struct or enum. There could be a Point<f64> but
+/// the generic-ness could continue as Point<T> in another implementation.
+impl Point<f64> {
+    fn distance_from_origin(&self) -> f64 {
+        (self.x.powi(2) + self.y.powi(2)).sqrt()
+    }
+}
+
+/// A method inside a struct implementation can be called by using dot notation on a
+/// variable that is previously defined.
+fn call_method_from_struct_instantiation() -> () {
+    let p: Point<f64> = Point{x: 5.0, y: 10.0};
+    println!("{}", p.distance_from_origin());
+}
