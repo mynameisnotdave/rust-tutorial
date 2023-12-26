@@ -25,7 +25,7 @@ fn assign_by_conditional() -> () {
         } else {
             println!(", and is a big number, halve the number");
 
-            n / 2.0;
+            n / 2
         };
     println!("{} -> {}", n, big_n);
 }
