@@ -53,3 +53,21 @@ impl TrafficLight {
         self.color = "green".to_string()
     }
 }
+
+enum TrafficLightColour {
+    Red,
+    Yellow,
+    Green
+}
+
+// In this impl block, match is used in the impl's method to match the enum.
+// Note the use of match 'self' and how 'Self::' is used.
+impl TrafficLightColour {
+    fn colour(&self) -> &str {
+        match self {
+            Self::Yellow => "yellow",
+            Self::Red => "red",
+            Self::Green => "green"
+        }
+    }
+}
