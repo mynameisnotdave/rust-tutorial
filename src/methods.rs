@@ -11,6 +11,10 @@ impl Rectangle {
         // get replaced by the name of the variable that is referencing the struct.
         return self.width * self.height
     }
+}
+
+// It is possible to have more than one impl block.
+impl Rectangle {
     // This is an associated function. It is associated because it does not have self
     // as its first parameter.
     fn new(width: u32, height: u32) -> Rectangle {
@@ -34,3 +38,18 @@ fn associated_type_init() -> () {
         A function is just a plain old 'fn' function and can be associated or not
         associated with anything.
 */
+
+struct TrafficLight {
+    color: String,
+}
+
+impl TrafficLight {
+    pub fn show_state(self: &Self) {
+        println!("the current state is {}", self.color);
+    }
+
+    // One can use &mut self when a struct method mutates the value of one of its members.
+    pub fn change_state(&mut self) {
+        self.color = "green".to_string()
+    }
+}
