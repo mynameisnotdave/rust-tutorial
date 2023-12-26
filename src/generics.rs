@@ -35,7 +35,28 @@ struct TwoTypedPoint<T, U> {
     y: U
 }
 
+
+
+impl<T, U> TwoTypedPoint<T, U> {
+    /// The return generic types in this method are T and W because it returns a
+    /// TwoTypedPoint of 'self.x' (a TwoTypedPoint that is asking for T and U, and
+    /// x in TwoTypedPoint = T), and then an an 'other' that is asking for a TwoTypedPoint
+    /// of V and W, W according itself to y.
+    /// Additionally, the purpose of the method is to mixup the values of two previously
+    /// assigned structs.
+    fn mixup<V, W>(self, other: TwoTypedPoint<V, W>) -> TwoTypedPoint<T, W> {
+        TwoTypedPoint {
+            x: self.x,
+            y: other.y
+        }
+    } 
+}
+
 fn two_typed_point() -> () {
     // Generic structs can also take multiple different defined types.
     let p: TwoTypedPoint<i32, String> = TwoTypedPoint{x: 5, y: "hello".to_string()};
+
+    let p1: TwoTypedPoint<i32, i32> = TwoTypedPoint {x: 5, y: 10};
+    let p2: TwoTypedPoint<&str, char> = TwoTypedPoint {x: "Hello", y: 'Д'};
+    let p3: TwoTypedPoint<i32, char> = p1.mixup(p2);
 }
