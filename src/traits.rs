@@ -1,3 +1,5 @@
+use std::ops;
+
 /// Traits are Rust's version of interfaces.
 trait Animal {
     fn sound(&self) -> String;
@@ -50,4 +52,19 @@ fn do_stuff_with_the_traits() -> () {
     // implementation for Student, which inherits the traits of Hello.
     assert_eq!(s.say_hi(), "Hi");
 
+}
+
+struct Foo;
+struct Bar;
+
+struct FooBar;
+struct BarFoo;
+
+// Overriding the trait so that it can take FooBar and not just numeric types.
+impl ops::Add<Bar> for Foo {
+    type Output = FooBar; // This is needed to declare the type of the output.
+
+    fn add(self, _rhs: Bar) -> FooBar {
+        FooBar
+    }
 }
