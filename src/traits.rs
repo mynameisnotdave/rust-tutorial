@@ -129,6 +129,11 @@ fn summary(a: impl Summary) {
 /// implemented in the trait. However, since this trait function is implemented for different
 /// structs differently, then the decision of which function to call
 /// must be declared at runtime.
+///
+/// Additionally, a box is an allocation of heap memory of whatever is inside the box.
+/// This means I understand why everything has to be boxed here -- the sizes of what could be
+/// returned from this function are not known, so it is not possible to store this sort of
+/// thing on the stack.
 fn random_animal(random_number: f64) -> Box<dyn Animal> {
     if random_number < 0.5 {
         Box::new(Sheep {})
