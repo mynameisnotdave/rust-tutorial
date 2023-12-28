@@ -55,3 +55,27 @@ fn misc() -> () {
     static_dispatch(x);
     dynamic_dispatch(&y);
 }
+
+// What all of this is doing here is dynamic dispatch through and through.
+// I'm basically allocating anything and everything associated with this
+// trait to a heap of memory, where all of its associated items can be managed.
+trait MyTrait2 {
+    fn f(&self) -> Box<dyn MyTrait2>;
+}
+
+impl MyTrait2 for u32 {
+    fn f(&self) -> Box<dyn MyTrait2 > { Box::new(42) }
+}
+
+impl MyTrait2 for String {
+    fn f(&self) -> Box<dyn MyTrait2> { Box::new(self.clone()) }
+}
+
+fn my_function(x: Box<dyn MyTrait2>) -> Box<dyn MyTrait2> {
+    x.f()
+}
+
+fn misc2() -> () {
+    my_function(Box::new(13_u32));
+    my_function(Box::new(String::from("abc")));
+}
