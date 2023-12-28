@@ -7,6 +7,7 @@ mod pattern_match;
 mod methods;
 mod generics;
 mod traits;
+mod associated_types;
 
 fn main() -> () {
     println!("Hello world!");
