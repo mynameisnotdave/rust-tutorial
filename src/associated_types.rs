@@ -1,3 +1,5 @@
+use std::fmt::format;
+
 trait MyTrait {
     // Inside of traits we can define associated types.
     type MyType;
@@ -13,5 +15,22 @@ impl MyTrait for MyStruct {
 
     fn get_my_type(&self) -> Self::MyType {
         return 42;
+    }
+}
+
+trait Foo {
+    fn method(&self) -> String;
+}
+
+// It is possible to implement traits on primitive types.
+impl Foo for u8 {
+    fn method(&self) -> String {
+        format!("u8:{}", *self)
+    }
+}
+
+impl Foo for String {
+    fn method(&self) -> String {
+        format!("string: {}", *self)
     }
 }
