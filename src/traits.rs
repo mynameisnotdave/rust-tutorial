@@ -57,7 +57,10 @@ fn do_stuff_with_the_traits() -> () {
 struct Foo;
 struct Bar;
 
+
+#[derive(PartialEq, Debug)]
 struct FooBar;
+#[derive(PartialEq, Debug)]
 struct BarFoo;
 
 // Overriding the trait so that it can take FooBar and not just numeric types.
@@ -68,3 +71,53 @@ impl ops::Add<Bar> for Foo {
         FooBar
     }
 }
+
+impl ops::Sub<Bar> for Foo {
+    type Output = BarFoo;
+
+    fn sub(self, _rhs: Bar) -> BarFoo {
+        BarFoo
+    }
+}
+
+fn add_sub_bar_foo() -> () {
+    assert_eq!(Foo + Bar, FooBar);
+    assert_eq!(Foo - Bar, BarFoo);
+}
+
+trait Summary {
+    fn summarize(&self) -> String;
+}
+
+#[derive(Debug)]
+struct Post {
+    title: String,
+    author: String,
+    content: String
+}
+
+impl Summary for Post {
+    fn summarize(&self) -> String {
+        format!("The author of post {} is {}", self.title, self.author)
+    }
+}
+
+#[derive(Debug)]
+struct Weibo {
+    username: String,
+    content: String
+}
+
+impl Summary for Weibo {
+    fn summarize(&self) -> String {
+        format!("{} published a weibo {}", self.username, self.content)
+    }
+}
+
+// Traits can be function arguments. However, it must be as an impl.
+fn summary(a: impl Summary) {
+    let output: String = a.summarize();
+
+    println!("{}", output);
+}
+
