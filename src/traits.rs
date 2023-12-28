@@ -121,3 +121,24 @@ fn summary(a: impl Summary) {
     println!("{}", output);
 }
 
+/// Returning structs and having the return type as a trait object requires everything
+/// to be boxed, the trait object must be boxed as dyn Animal, and the returned structs must
+/// be boxed as well. Using dyn infers dynamic dispatch. Dynamic dispatch in this instance
+/// is necessary because of the way this function is used, as it is assigned in a variable
+/// in the function below and subsequently used to call the sound function that is
+/// implemented in the trait. However, since this trait function is implemented for different
+/// structs differently, then the decision of which function to call
+/// must be declared at runtime.
+fn random_animal(random_number: f64) -> Box<dyn Animal> {
+    if random_number < 0.5 {
+        Box::new(Sheep {})
+    } else {
+        Box::new(Cow {})
+    }
+}
+
+fn random_animal_impl() -> () {
+    let random_number: f64 = 0.234;
+    let animal = random_animal(random_number);
+    println!("You've randomly chosen an animal, and it says {}", animal.sound());
+}
