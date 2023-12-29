@@ -9,6 +9,7 @@ mod generics;
 mod traits;
 mod associated_types;
 mod strings;
+mod vector;
 
 fn main() -> () {
     println!("Hello world!");
