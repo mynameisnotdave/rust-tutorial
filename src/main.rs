@@ -8,6 +8,7 @@ mod methods;
 mod generics;
 mod traits;
 mod associated_types;
+mod strings;
 
 fn main() -> () {
     println!("Hello world!");
