@@ -47,3 +47,22 @@ fn utf8_to_string() -> () {
 
     println!("Success!");
 }
+
+/// Use with_capacity() to create a string in heap memory that has a predefined capacity.
+/// Otherwise, String::new() will just allocate 0 and will dynamically expand based on
+/// the size of new elements added to the string.
+fn with_capacity() -> () {
+
+    let mut s: String = String::with_capacity(25);
+
+    println!("{}", s.capacity());
+    
+    for _ in 0..2 {
+        s.push_str("hello");
+        println!("{}", s.capacity());
+    }
+
+    println!("{}", s);
+
+    println!("Success!");
+}
