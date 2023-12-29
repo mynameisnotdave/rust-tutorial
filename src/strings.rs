@@ -23,3 +23,27 @@ fn string_to_str() {
     slice3.push('!');
     assert_eq!(slice3, "hello, world!");
 }
+
+fn iterate_thru_string() -> () {
+    let s: String = String::from("hello, мир");
+
+    for (i, c) in s.chars().enumerate() {
+        if i == 7 {
+            assert_eq!(c, 'м')
+        }
+    }
+    println!("Success!");
+}
+
+fn utf8_to_string() -> () {
+    let mut s: String = String::new();
+    s.push_str("hello");
+
+    let v: Vec<u8> = vec![104, 101, 108, 108, 111]; // hello
+    // from_utf8 returns a Result so the result has to be unwrapped.
+    let s1: String = String::from_utf8(v).unwrap();
+
+    assert_eq!(s, s1);
+
+    println!("Success!");
+}
