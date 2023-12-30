@@ -64,8 +64,13 @@ fn index_vec() -> () {
     }
     for i in 0..5 {
         match v.get(i) {
-          Some(e) => v[i] = e + 1,
-          None => v.push(i + 2)
+            // What does this do here?
+            // If the value is indexable, iterate it up one more up to index five.
+            Some(e) => v[i] = e + 1,
+            // If it doesn't exist, push the unindexable value and add two.
+            None => v.push(i + 2)
         }
     }
+
+    assert_eq!(v, vec![2,3,4,5,6]);
 }
