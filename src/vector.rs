@@ -40,3 +40,14 @@ fn extend_vector() -> () {
 
     println!("Success!");
 }
+
+fn string_to_vec() -> () {
+    // str to Vec
+    let s: &str = "hello";
+    let v2: Vec<u8> = Vec::from(s);
+
+    // String to Vec
+    let t: String = String::from("hello");
+    let v3: Vec<u8> = t.into_bytes();    
+    assert_eq!(v2, v3);
+}
