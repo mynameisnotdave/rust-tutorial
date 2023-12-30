@@ -51,3 +51,21 @@ fn string_to_vec() -> () {
     let v3: Vec<u8> = t.into_bytes();    
     assert_eq!(v2, v3);
 }
+
+fn index_vec() -> () {
+    // Using the get method below forces us to use usize as the Vector's type (for
+    // numerical elements).
+    let mut v: Vec<usize> = Vec::from([1,2,3]);
+    for i in 0..5 {
+        // Don't use v[i] here. Use v.get, which returns an option type. This can safely
+        // handle out of bounds situations by returning a Some() type if there is something
+        // that can be accessed, and then if there is something out of bounds then it's None.
+        println!("{:?}", v.get(i))
+    }
+    for i in 0..5 {
+        match v.get(i) {
+          Some(e) => v[i] = e + 1,
+          None => v.push(i + 2)
+        }
+    }
+}
