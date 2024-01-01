@@ -10,6 +10,7 @@ mod traits;
 mod associated_types;
 mod strings;
 mod vector;
+mod hashmaps;
 
 fn main() -> () {
     println!("Hello world!");
