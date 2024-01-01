@@ -22,3 +22,30 @@ fn hashmap() -> () {
         println!("The score of {} is {}", name, score);
     }
 }
+
+fn convert_tuple_arr_to_hashmap() -> () {
+    // This is how to define an array of tuples.
+    // Define the types inside the tuple and then define how many
+    // tuples there are in the array.
+    let teams: [(&str, i32);3] = [
+        ("Chinese Team", 100),
+        ("American Team", 10),
+        ("France Team", 50),
+    ];
+
+    let mut teams_map1: HashMap<&str, i32> = HashMap::new();
+    // This is how to convert this array of tuples into a hash map.
+    // There is however another way of doing it.
+    for team in &teams {
+        teams_map1.insert(team.0, team.1);
+    }
+
+    // This is a simpler way of doing it. Relatively self explanatory.
+    let teams_map2: HashMap<&str, i32> = HashMap::from(teams);
+
+    // This is another way of doing it, however the data structure that teams is
+    // being 'collected' into must be explicitly defined.
+    let _teams_map3: HashMap<&str, i32> = teams.into_iter().collect();
+
+    assert_eq!(teams_map1, teams_map2);
+}
