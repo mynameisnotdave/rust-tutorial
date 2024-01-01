@@ -49,3 +49,15 @@ fn convert_tuple_arr_to_hashmap() -> () {
 
     assert_eq!(teams_map1, teams_map2);
 }
+
+fn check_if_exists() -> () {
+    let mut player_stats: HashMap<&str, i32> = HashMap::new();
+
+    // This is how to insert a new value based on whether the key exists currently or not.
+    // Use or_insert_with(FUNCTION NAME) to apply a value based on what a function returns.
+    player_stats.entry("health").or_insert(100);
+
+    assert_eq!(player_stats["health"], 100);
+
+
+}
