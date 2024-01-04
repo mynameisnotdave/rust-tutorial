@@ -58,6 +58,4 @@ fn check_if_exists() -> () {
     player_stats.entry("health").or_insert(100);
 
     assert_eq!(player_stats["health"], 100);
-
-
 }
