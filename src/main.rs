@@ -11,6 +11,7 @@ mod associated_types;
 mod strings;
 mod vector;
 mod hashmaps;
+mod typecoercion;
 
 fn main() -> () {
     println!("Hello world!");
