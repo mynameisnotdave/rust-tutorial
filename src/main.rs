@@ -12,6 +12,7 @@ mod strings;
 mod vector;
 mod hashmaps;
 mod typecoercion;
+mod frominto_conversion;
 
 fn main() -> () {
     println!("Hello world!");
