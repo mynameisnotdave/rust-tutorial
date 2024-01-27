@@ -1,4 +1,5 @@
 use std::fmt;
+use std::str::FromStr;
 
 struct Point {
     x: i32,
@@ -19,6 +20,17 @@ fn point_to_string() -> () {
 
     assert_eq!(origin.to_string(), "The point is (0,0)");
     assert_eq!(format!("{}", origin), "The point is (0,0)");
+
+    println!("Success!");
+}
+
+// This shows how one can convert integers to strings and vice versa.
+fn parse_and_unwrap() -> () {
+    let parsed: i32 = "5".parse().unwrap();
+    let turbo_parsed: i32 = "10".parse::<i32>().unwrap();
+    let from_str: i32 = i32::from_str("20").unwrap();
+    let sum: i32 = parsed + turbo_parsed + from_str;
+    assert_eq!(sum, 35);
 
     println!("Success!");
 }
