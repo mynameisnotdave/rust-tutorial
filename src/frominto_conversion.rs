@@ -1,4 +1,3 @@
-use std::fmt::Result;
 use std::fs;
 use std::io;
 use std::num;
@@ -86,7 +85,7 @@ struct EvenNum(i32);
 impl TryFrom<i32> for EvenNum {
     type Error = ();
 
-    fn try_from(value: i32) -> Result {
+    fn try_from(value: i32) -> Result<Self, Self::Error> {
         if value % 2 == 0 {
             Ok(EvenNum(value))
         }
