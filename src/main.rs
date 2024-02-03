@@ -14,6 +14,7 @@ mod hashmaps;
 mod typecoercion;
 mod frominto_conversion;
 mod display;
+mod result;
 
 fn main() -> () {
     println!("Hello world!");
