@@ -53,11 +53,33 @@ fn do_the_multiply() -> () {
 /// if the function provides an Ok result, otherwise provide another value.
 /// That is all that is needed.
 fn add_two(n_str: &str) -> Result<i32, ParseIntError> {
-    n_str.parse::<i32>().map(|n| n + 2)
+    n_str.parse::<i32>().map(|n: i32| n + 2)
 }
 
-fn main() ->() {
+fn do_add_two() ->() {
     assert_eq!(add_two("4").unwrap(), 6);
 
     println!("Succ");
 }
+
+// The Ok value has to asserted in the and_then function.
+fn add_two_and_then(n_str: &str) -> Result<i32, ParseIntError> {
+    n_str.parse::<i32>().and_then(|n: i32| Ok(n+2))
+}
+
+fn do_add_two_and_then() -> () {
+    assert_eq!(add_two_and_then("4").unwrap(), 6);
+}
+
+// Example of how types can be defined, a short hand version of Result<i32, ParseIntError>.
+type Res<i32> = Result<i32, ParseIntError>;
+
+/// ??????
+fn multiply1(n1_str: &str, n2_str: &str) -> Res<i32> {
+    n1_str
+        .parse::<i32>()
+        .and_then(|n1| n2_str.parse::<i32>().map(|n2| n1 * n2))
+}
+
+
+
