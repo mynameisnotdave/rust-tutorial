@@ -144,6 +144,6 @@ fn random_animal(random_number: f64) -> Box<dyn Animal> {
 
 fn random_animal_impl() -> () {
     let random_number: f64 = 0.234;
-    let animal = random_animal(random_number);
+    let animal: Box<dyn Animal> = random_animal(random_number);
     println!("You've randomly chosen an animal, and it says {}", animal.sound());
 }

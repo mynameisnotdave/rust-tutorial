@@ -15,6 +15,7 @@ mod typecoercion;
 mod frominto_conversion;
 mod display;
 mod result;
+mod lifetimes;
 
 fn main() -> () {
     println!("Hello world!");

@@ -49,7 +49,7 @@ fn do_the_multiply() -> () {
     println!("Success!");
 }
 
-/// No need for long winded error handling here. The map function provides a value
+/// No need for long-winded error handling here. The map function provides a value
 /// if the function provides an Ok result, otherwise provide another value.
 /// That is all that is needed.
 fn add_two(n_str: &str) -> Result<i32, ParseIntError> {
